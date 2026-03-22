@@ -1,0 +1,30 @@
+{
+  "name": "forme-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A stunning showcase website powered by Forme CMS — demonstrates composable content modeling with pages, components, and data models.",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "@formecms/sdk": "^0.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "next": "^15.4.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^9.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.8",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.4",
+    "typescript": "^5.9.3"
+  }
+}
