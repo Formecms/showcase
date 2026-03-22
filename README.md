@@ -104,12 +104,19 @@ pnpm build   # Verify the build works
 
 ## Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `FORME_DELIVERY_URL` | Delivery API URL | Yes |
-| `FORME_READ_KEY` | Read Key (starts with `ce_read_`) | Yes |
-| `FORME_MANAGEMENT_URL` | Management API URL | Seed only |
-| `FORME_SECRET_KEY` | Secret Key (starts with `ce_secret_`) | Seed only |
+**To run the app** (read only, no write access):
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `FORME_DELIVERY_URL` | Delivery API URL | `https://delivery.forme.sh` |
+| `FORME_READ_KEY` | Read Key (starts with `ce_read_`) | |
+
+**To seed content** (only needed once, for `pnpm seed`):
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `FORME_MANAGEMENT_URL` | Management API URL | `https://management.forme.sh` |
+| `FORME_SECRET_KEY` | Secret Key (starts with `ce_secret_`) | |
 
 ## Tech Stack
 
