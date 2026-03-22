@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@formecms/sdk':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.19(tailwindcss@3.4.19(tsx@4.21.0))
@@ -217,8 +217,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@formecms/sdk@0.1.0':
-    resolution: {integrity: sha512-Y80vNwK38HGqHfzfV2JUHyCrkGK0tEw9Bhon/y+G/p2cFsJMY2EKOiBKxmPbPOOP/q3gWDpieBK9C6szQL12Hg==}
+  '@formecms/sdk@0.1.1':
+    resolution: {integrity: sha512-wDyOZghuI0U6MgphDZ6vzNwmtp/fr1lBQXzpnZVtC5ZmbI75r1vnYqNhL6oFYYuPe2F1sPKOMLFFiGrj+a4Knw==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -1275,7 +1275,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.4':
     optional: true
 
-  '@formecms/sdk@0.1.0': {}
+  '@formecms/sdk@0.1.1': {}
 
   '@img/colour@1.1.0':
     optional: true
