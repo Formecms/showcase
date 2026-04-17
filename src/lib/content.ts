@@ -53,12 +53,13 @@ export function resolveEntryRefs(refs: unknown, includes: Includes): DlvEntry[] 
 }
 
 /**
- * Resolve asset URLs to the local proxy route (/api/asset/{id}).
- * The Delivery API requires Bearer auth on asset file endpoints, but
- * browser <img> tags can't send auth headers. The proxy adds it server-side.
+ * Asset URLs come directly from the Delivery API — when CDN_BASE_URL is
+ * configured on the server, `asset.url` is already a public CDN URL
+ * (https://cdn.forme.build/...) that works in `<img>` tags without auth.
+ * No proxy needed.
  */
 function resolveAssetUrl(asset: DlvAsset): DlvAsset {
-  return { ...asset, url: `/api/asset/${asset.id}` } as DlvAsset;
+  return asset;
 }
 
 export function resolveAssetRef(ref: unknown, includes: Includes): DlvAsset | undefined {
@@ -82,18 +83,18 @@ export async function getPage(slug: string): Promise<ResolvedPage | null> {
   const modelId = await getContentModelId(MODEL_API_IDS.Page);
   if (!modelId) return null;
 
+  // Server-side filter by slug — one row returned, no client-side scan.
   const result = await delivery.entries.list({
     contentModelId: modelId,
     include: 1,
     locale: "en-US",
-    limit: 100,
+    fields: { slug },
+    limit: 1,
   });
 
   if (!result.ok || !result.data) return null;
 
-  const page = (result.data as unknown as { items: DlvEntry[] }).items.find(
-    (e: DlvEntry) => e.fields.slug === slug,
-  );
+  const page = (result.data as unknown as { items: DlvEntry[] }).items[0];
   if (!page) return null;
 
   const includes = extractIncludes(result.data as unknown as { includes?: Includes });
@@ -140,17 +141,18 @@ export async function getBlogPost(
   const modelId = await getContentModelId(MODEL_API_IDS.BlogPost);
   if (!modelId) return null;
 
+  // Server-side filter by slug.
   const result = await delivery.entries.list({
     contentModelId: modelId,
     include: 1,
     locale: "en-US",
-    limit: 100,
+    fields: { slug },
+    limit: 1,
   });
 
   if (!result.ok || !result.data) return null;
 
-  const items = (result.data as unknown as { items: DlvEntry[] }).items;
-  const post = items.find((e: DlvEntry) => e.fields.slug === slug);
+  const post = (result.data as unknown as { items: DlvEntry[] }).items[0];
   if (!post) return null;
 
   return { post, includes: extractIncludes(result.data as unknown as { includes?: Includes }) };
@@ -178,14 +180,15 @@ export async function getNavigation(location: "header" | "footer"): Promise<DlvE
   const modelId = await getContentModelId(MODEL_API_IDS.NavigationMenu);
   if (!modelId) return null;
 
+  // Server-side filter by location (header / footer).
   const result = await delivery.entries.list({
     contentModelId: modelId,
     locale: "en-US",
-    limit: 10,
+    fields: { location },
+    limit: 1,
   });
 
   if (!result.ok || !result.data) return null;
-
   const items = (result.data as unknown as { items: DlvEntry[] }).items;
-  return items.find((e: DlvEntry) => e.fields.location === location) ?? null;
+  return items[0] ?? null;
 }

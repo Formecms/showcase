@@ -2,7 +2,7 @@
   "name": "forme-showcase",
   "version": "0.1.0",
   "private": true,
-  "description": "A stunning showcase website powered by Forme CMS \u2014 demonstrates composable content modeling with pages, components, and data models.",
+  "description": "A stunning showcase website powered by Forme CMS — demonstrates composable content modeling with pages, components, and data models.",
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@formecms/sdk": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
-    "next": "^15.4.2",
+    "next": "^15.5.15",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-markdown": "^9.1.0",

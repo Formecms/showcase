@@ -21,7 +21,7 @@ const SECRET_KEY = process.env.FORME_SECRET_KEY ?? "";
 
 if (!SECRET_KEY) {
   console.error("ERROR: FORME_SECRET_KEY is required.");
-  console.error("Set it via: FORME_SECRET_KEY=ce_secret_... pnpm seed");
+  console.error("Run `pnpm seed` in the content-engine repo and export the Secret Key.");
   process.exit(1);
 }
 
