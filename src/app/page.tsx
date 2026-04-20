@@ -1,7 +1,7 @@
 import { getPage } from "@/lib/content";
 import { SectionRenderer } from "@/components/sections/section-renderer";
 
-export const revalidate = 60;
+export const revalidate = 3;
 
 export default async function HomePage() {
   const page = await getPage("home");

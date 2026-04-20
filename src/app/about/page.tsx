@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { getFields } from "@/lib/types";
 import type { PageFields } from "@/lib/types";
 
-export const revalidate = 60;
+export const revalidate = 3;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPage("about");
